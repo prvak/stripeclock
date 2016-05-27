@@ -1,15 +1,45 @@
+#app {
+  position: relative;
+}
+
 .pixel {
   width: 50px;
   height: 50px;
 }
 
-.right {
-  font-size: 5px;
+.right0 {
   background: repeating-linear-gradient(
     45deg,
     #606dbc,
-    #606dbc 10px,
-    #465298 10px,
-    #465298 20px
+    #606dbc 10%,
+    #465298 10%,
+    #465298 20%
+  );
+}
+.right1 {
+  background: repeating-linear-gradient(
+    45deg,
+    #465298,
+    #465298 10%,
+    #606dbc 10%,
+    #606dbc 20%
+  );
+}
+.left0 {
+  background: repeating-linear-gradient(
+    -45deg,
+    #465298,
+    #465298 10%,
+    #606dbc 10%,
+    #606dbc 20%
+  );
+}
+.left1 {
+  background: repeating-linear-gradient(
+    -45deg,
+    #606dbc,
+    #606dbc 10%,
+    #465298 10%,
+    #465298 20%
   );
 }

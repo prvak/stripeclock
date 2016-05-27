@@ -2,6 +2,7 @@ import React from "react";
 
 import TimeStore from "../stores/TimeStore";
 import SpaceActions from "../actions/TimeActions";
+import Digit from "../components/Digit.react";
 import HtmlUtils from "../HtmlUtils";
 
 function getAppState() {
@@ -65,10 +66,14 @@ class App extends React.Component {
 
   render() {
     const style = {
-      width: `${100}px`,
-      height: `${100}px`,
+      width: `${200}px`,
+      height: `${200}px`,
     };
-    return <div id="app" className="pixel right" style={style}></div>;
+    const value = 0;
+    const size = 100;
+    return (<div id="app" className="pixel right" style={style}>
+        <Digit value={0} size={size} key={0} />
+      </div>);
   }
 }
 
