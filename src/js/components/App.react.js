@@ -3,6 +3,7 @@ import React from "react";
 import TimeStore from "../stores/TimeStore";
 import TimeActions from "../actions/TimeActions";
 import Digit from "../components/Digit.react";
+import Space from "../components/Space.react";
 import HtmlUtils from "../HtmlUtils";
 import TimeConstants from "../constants/TimeConstants";
 
