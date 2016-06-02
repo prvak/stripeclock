@@ -1,45 +1,35 @@
 #app {
   position: relative;
 }
+.digit {
+  position: absolute;
+}
 
 .pixel {
   width: 50px;
   height: 50px;
+  background-size: 50px 50px;
 }
 
-.right0 {
+.right {
   background: repeating-linear-gradient(
     45deg,
-    #606dbc,
-    #606dbc 10%,
-    #465298 10%,
-    #465298 20%
+    #606dbc 0%,
+    #606dbc 12.5%,
+    #465298 12.5%,
+    #465298 37.5%,
+    #606dbc 37.5%,
+    #606dbc 50%
   );
 }
-.right1 {
-  background: repeating-linear-gradient(
-    45deg,
-    #465298,
-    #465298 10%,
-    #606dbc 10%,
-    #606dbc 20%
-  );
-}
-.left0 {
+.left {
   background: repeating-linear-gradient(
     -45deg,
-    #465298,
-    #465298 10%,
-    #606dbc 10%,
-    #606dbc 20%
-  );
-}
-.left1 {
-  background: repeating-linear-gradient(
-    -45deg,
-    #606dbc,
-    #606dbc 10%,
-    #465298 10%,
-    #465298 20%
+    #606dbc 0%,
+    #606dbc 12.5%,
+    #465298 12.5%,
+    #465298 37.5%,
+    #606dbc 37.5%,
+    #606dbc 50%
   );
 }

@@ -1,9 +1,10 @@
 import React from "react";
 
 import TimeStore from "../stores/TimeStore";
-import SpaceActions from "../actions/TimeActions";
+import TimeActions from "../actions/TimeActions";
 import Digit from "../components/Digit.react";
 import HtmlUtils from "../HtmlUtils";
+import TimeConstants from "../constants/TimeConstants";
 
 function getAppState() {
   return {
@@ -20,7 +21,7 @@ class App extends React.Component {
     };
     this._onTick = () => {
       const now = HtmlUtils.now();
-      SpaceActions.nextTick(now);
+      TimeActions.setTimestamp(now);
     };
     this._onResize = () => {
       // const w = window;
@@ -65,14 +66,21 @@ class App extends React.Component {
   }
 
   render() {
-    const style = {
-      width: `${200}px`,
-      height: `${200}px`,
-    };
-    const value = 0;
-    const size = 100;
-    return (<div id="app" className="pixel right" style={style}>
-        <Digit value={0} size={size} key={0} />
+    const digits = [0, 1];
+    const elements = [];
+    const size = 50;
+    digits.forEach((digit, index) => {
+      const x = (index * TimeConstants.DIGIT_COLUMNS + 1 + index) * size;
+      const key = `${index}`;
+      const style = {
+        left: `${x}px`,
+      };
+      elements.push(<div className="digit" style={style} key={key}>
+          <Digit value={digit} size={size} />
+        </div>);
+    });
+    return (<div id="app">
+        {elements}
       </div>);
   }
 }

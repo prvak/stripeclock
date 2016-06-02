@@ -1,28 +1,6 @@
 import React from "react";
 import Pixel from "../components/Pixel.react";
-
-const DIGITS = [
-  // 0
-  [
-    [0, 0],
-    [0, 0],
-  ],
-  // 1
-  [
-    [0, 1],
-    [1, 0],
-  ],
-  // 2
-  [
-    [1, 0],
-    [0, 1],
-  ],
-  // 3
-  [
-    [1, 1],
-    [1, 1],
-  ],
-];
+import TimeConstants from "../constants/TimeConstants";
 
 class Digit extends React.Component {
   shouldComponentUpdate(nextProps) {
@@ -31,23 +9,22 @@ class Digit extends React.Component {
 
   _renderDigit(digit) {
     const size = this.props.size;
-    const raster = DIGITS[digit];
+    const raster = TimeConstants.DIGITS[digit];
     const pixels = [];
-    console.log(digit);
+    const createPixel = (x, y, value) => {
+      const key = `${x}x${y}`;
+      const style = {
+        position: "absolute",
+        left: `${x * size}px`,
+        top: `${y * size}px`,
+      };
+      return (<div style={style} key={key}>
+        <Pixel value={value} size={size} />
+      </div>);
+    };
     raster.forEach((row, y) => {
-      console.log(row);
       row.forEach((value, x) => {
-        const key = `${x}x${y}`;
-        console.log(value, key);
-        const style = {
-          position: "absolute",
-          left: `${x * size}px`,
-          top: `${y * size}px`,
-        };
-        const alt = (x + y) % 2;
-        pixels.push(<div style={style}>
-          <Pixel value={value} alt={alt} size={size} key={key} />
-        </div>);
+        pixels.push(createPixel(x, y, value));
       });
     });
     return pixels;
@@ -56,7 +33,7 @@ class Digit extends React.Component {
   render() {
     const value = this.props.value;
     const pixels = this._renderDigit(value);
-    return <div className="digit">{pixels}</div>;
+    return <div>{pixels}</div>;
   }
 }
 
