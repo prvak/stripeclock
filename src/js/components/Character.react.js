@@ -2,14 +2,14 @@ import React from "react";
 import Pixel from "../components/Pixel.react";
 import TimeConstants from "../constants/TimeConstants";
 
-class Digit extends React.Component {
+class Character extends React.Component {
   shouldComponentUpdate(nextProps) {
     return this.props.value !== nextProps.value;
   }
 
-  _renderDigit(digit) {
+  _renderCharacter(character) {
     const size = this.props.size;
-    const raster = TimeConstants.DIGITS[digit];
+    const raster = TimeConstants.CHARS[character];
     const pixels = [];
     const createPixel = (x, y, value) => {
       const key = `${x}x${y}`;
@@ -32,14 +32,14 @@ class Digit extends React.Component {
 
   render() {
     const value = this.props.value;
-    const pixels = this._renderDigit(value);
+    const pixels = this._renderCharacter(value);
     return <div>{pixels}</div>;
   }
 }
 
-Digit.propTypes = {
-  value: React.PropTypes.number.isRequired,
+Character.propTypes = {
+  value: React.PropTypes.string.isRequired,
   size: React.PropTypes.number.isRequired,
 };
 
-export default Digit;
+export default Character;

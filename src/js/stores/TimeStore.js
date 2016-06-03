@@ -27,6 +27,10 @@ class TimeStore extends EventEmitter {
   setTimestamp(timestamp) {
     this._timestamp = timestamp;
   }
+
+  getTimestamp() {
+    return this._timestamp;
+  }
 }
 
 const store = new TimeStore();
