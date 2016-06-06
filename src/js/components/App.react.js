@@ -90,9 +90,14 @@ class App extends React.Component {
     const time = `${hours}${minutes}${seconds}`;
     const date = `${year}${month}${day}`;
     const size = Math.floor(this.state.windowSize.width / TimeConstants.WINDOW_COLUMNS);
+    const shift = (this.state.windowSize.width - TimeConstants.WINDOW_COLUMNS * size) / 2;
     const isPaused = this.state.isPaused;
     const isSpoiled = this.state.isSpoiled;
-    return (<div id="app">
+    const style = {
+      backgroundSize: `${size}px`,
+      backgroundPositionX: `${shift}px`,
+    };
+    return (<div id="app" style={style}>
         <DateTime date={date} time={time} size={size} isSpoiled={isSpoiled} />
         <Footer isPaused={isPaused} isSpoiled={isSpoiled} />
       </div>);
