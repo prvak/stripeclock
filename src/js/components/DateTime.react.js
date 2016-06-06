@@ -60,7 +60,12 @@ class DateTime extends React.Component {
       height: TimeConstants.WINDOW_ROWS * size,
       backgroundSize: `${size}px ${size}px`,
     };
+    const bottomFillStyle = {
+      backgroundSize: size,
+      width: TimeConstants.WINDOW_COLUMNS * size,
+    };
     return (<div className="dateTimeWrapper" style={dateTimeWrapperStyle}>
+        <div className="bottomFill" style={bottomFillStyle}></div>
         <div className="dateTime" style={dateTimeStyle}>
           {elements}
         </div>

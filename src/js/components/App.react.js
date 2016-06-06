@@ -3,6 +3,7 @@ import React from "react";
 import TimeStore from "../stores/TimeStore";
 import TimeActions from "../actions/TimeActions";
 import DateTime from "../components/DateTime.react";
+import Footer from "../components/Footer.react";
 import HtmlUtils from "../HtmlUtils";
 import TimeConstants from "../constants/TimeConstants";
 
@@ -76,13 +77,9 @@ class App extends React.Component {
     const time = `${hours}${minutes}${seconds}`;
     const date = `${year}${month}${day}`;
     const size = Math.floor(this.state.windowSize.width / TimeConstants.WINDOW_COLUMNS);
-    const style = {
-      backgroundSize: size,
-      width: TimeConstants.WINDOW_COLUMNS * size,
-    };
     return (<div id="app">
-        <div className="bottomFill" style={style}></div>
         <DateTime date={date} time={time} size={size} />
+        <Footer />
       </div>);
   }
 }

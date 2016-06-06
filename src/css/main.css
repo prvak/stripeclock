@@ -1,10 +1,12 @@
 body {
   background-color: #2D882D;
+  margin: 0px;
 }
 
 #app {
   position: absolute;
   width: 100%;
+  height: 100%;
   top: 0px;
   bottom: 0px;
   right: 0px;
@@ -12,8 +14,8 @@ body {
 }
 
 .bottomFill {
-  margin: 0 auto;
   position: absolute;
+  margin: 0 auto;
   background-image: url("../graphics/stripesVertical.svg");
   top: 0;
   bottom: 0;
@@ -21,10 +23,27 @@ body {
   right: 0;
 }
 
+.footer {
+  position: relative;
+  text-align: center;
+  background-color: #2D882D;
+  height: 1.4em;
+  margin-top: -1.4em;
+  font-size: 1em;
+}
+
+a, a:visited {
+  color: #004400;
+}
+
+a:hover {
+  color: #116611;
+}
+
 .dateTimeWrapper {
+  min-height: 100%;
+  position: relative;
   margin: 0 auto;
-  position: absolute;
-  top: 0;
   left: 0;
   right: 0;
   background-image: url("../graphics/stripesHorizontal.svg");
