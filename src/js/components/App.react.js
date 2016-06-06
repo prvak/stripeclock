@@ -2,14 +2,14 @@ import React from "react";
 
 import TimeStore from "../stores/TimeStore";
 import TimeActions from "../actions/TimeActions";
-import Line from "../components/Line.react";
-import Space from "../components/Space.react";
+import DateTime from "../components/DateTime.react";
 import HtmlUtils from "../HtmlUtils";
 import TimeConstants from "../constants/TimeConstants";
 
 function getAppState() {
   return {
     timestamp: TimeStore.getTimestamp(),
+    windowSize: HtmlUtils.getWindowSize(),
   };
 }
 
@@ -25,14 +25,7 @@ class App extends React.Component {
       TimeActions.setTimestamp(now);
     };
     this._onResize = () => {
-      // const w = window;
-      // const d = document;
-      // const e = d.documentElement;
-      // const g = d.getElementsByTagName("body")[0];
-      // const width = w.innerWidth || e.clientWidth || g.clientWidth;
-      // const height = w.innerHeight || e.clientHeight || g.clientHeight;
-      // const unit = Math.min(width, height) / SpaceConstants.SPACE_SIZE;
-      // document.getElementsByTagName("html")[0].style["font-size"] = `${unit}px`;
+      this.setState(getAppState());
     };
   }
 
@@ -82,45 +75,9 @@ class App extends React.Component {
 
     const time = `${hours}${minutes}${seconds}`;
     const date = `${year}${month}${day}`;
+    const size = Math.floor(this.state.windowSize.width / 25);
 
-    const size = 25;
-    const elements = [];
-    const renderLine = (text, index) => {
-      const x = 1 * size;
-      const y = (index * TimeConstants.CHAR_ROWS + 1 + index) * size;
-      const key = `d-${index}`;
-      const style = {
-        position: "absolute",
-        left: `${x}px`,
-        top: `${y}px`,
-      };
-      return (<div style={style} key={key}>
-          <Line text={text} size={size} />
-        </div>);
-    };
-    const renderHorizontalSpace = (index, length) => {
-      const x = 1 * size;
-      const y = index * (TimeConstants.CHAR_ROWS + 1) * size;
-      const key = `s-${index}`;
-      const style = {
-        position: "absolute",
-        left: `${x}px`,
-        top: `${y}px`,
-      };
-      return (<div style={style} key={key}>
-          <Space width={length} height={1} size={size} />
-        </div>);
-    };
-    const lines = [time, date];
-    const pixels = Math.max(time.length, date.length) * (TimeConstants.CHAR_COLUMNS + 1) + 1;
-    lines.forEach((text, index) => {
-      if (index === 0) {
-        elements.push(renderHorizontalSpace(index, pixels));
-      }
-      elements.push(renderLine(text, index));
-      elements.push(renderHorizontalSpace(index + 1, pixels));
-    });
-    return (<div id="app">{elements}</div>);
+    return <div id="app"><DateTime date={date} time={time} size={size} /></div>;
   }
 }
 

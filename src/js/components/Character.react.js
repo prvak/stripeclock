@@ -4,7 +4,8 @@ import TimeConstants from "../constants/TimeConstants";
 
 class Character extends React.Component {
   shouldComponentUpdate(nextProps) {
-    return this.props.value !== nextProps.value;
+    return this.props.value !== nextProps.value
+      || this.props.size !== nextProps.size;
   }
 
   _renderCharacter(character) {
