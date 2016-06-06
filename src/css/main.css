@@ -22,15 +22,6 @@ a:hover {
   background-image: url("../graphics/stripesDiagonal.svg");
 }
 
-.bottomFill {
-  position: absolute;
-  margin: 0 auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
 .footer {
   position: relative;
   text-align: center;
@@ -44,17 +35,10 @@ a:hover {
   padding: 0 1em;
 }
 
-.dateTimeWrapper {
-  min-height: 100%;
-  position: relative;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-}
-
 .dateTime {
   margin: 0 auto;
-  position: absolute;
+  position: relative;
+  min-height: 100%;
   top: 0;
   left: 0;
   right: 0;

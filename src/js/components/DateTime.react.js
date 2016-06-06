@@ -53,25 +53,11 @@ class DateTime extends React.Component {
       elements.push(renderLine(text, index));
       elements.push(renderHorizontalSpace(index + 1, pixels));
     });
-    const dateTimeStyle = {
+    const style = {
       width: TimeConstants.WINDOW_COLUMNS * size,
       height: TimeConstants.WINDOW_ROWS * size,
     };
-    const dateTimeWrapperStyle = {
-      width: "100%",
-      height: TimeConstants.WINDOW_ROWS * size,
-      backgroundSize: `${size}px ${size}px`,
-    };
-    const bottomFillStyle = {
-      backgroundSize: size,
-      width: TimeConstants.WINDOW_COLUMNS * size,
-    };
-    return (<div className="dateTimeWrapper" style={dateTimeWrapperStyle}>
-        <div className="bottomFill" style={bottomFillStyle}></div>
-        <div className="dateTime" style={dateTimeStyle}>
-          {elements}
-        </div>
-      </div>);
+    return <div className="dateTime" style={style}>{elements}</div>;
   }
 }
 
