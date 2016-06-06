@@ -1,5 +1,6 @@
 const TimeConstants = {
   TIME_SET: "TIME_SET",
+  WINDOW_COLUMNS: 25,
   CHAR_ROWS: 5,
   CHAR_COLUMNS: 3,
   CHARS: {

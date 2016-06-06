@@ -11,6 +11,14 @@ body {
   left: 0px;
 }
 
+.datetime {
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
 .digit {
   position: absolute;
 }

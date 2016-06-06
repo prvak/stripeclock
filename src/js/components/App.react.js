@@ -75,8 +75,7 @@ class App extends React.Component {
 
     const time = `${hours}${minutes}${seconds}`;
     const date = `${year}${month}${day}`;
-    const size = Math.floor(this.state.windowSize.width / 25);
-
+    const size = Math.floor(this.state.windowSize.width / TimeConstants.WINDOW_COLUMNS);
     return <div id="app"><DateTime date={date} time={time} size={size} /></div>;
   }
 }

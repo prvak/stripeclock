@@ -51,7 +51,10 @@ class DateTime extends React.Component {
       elements.push(renderLine(text, index));
       elements.push(renderHorizontalSpace(index + 1, pixels));
     });
-    return <div>{elements}</div>;
+    const mainStyle = {
+      width: TimeConstants.WINDOW_COLUMNS * size,
+    };
+    return <div className="datetime" style={mainStyle}>{elements}</div>;
   }
 }
 
