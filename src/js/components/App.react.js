@@ -21,12 +21,6 @@ class App extends React.Component {
     this.state = getAppState();
     this._onChange = () => {
       this.setState(getAppState());
-      console.log("isPaused", this.state.isPaused);
-      if (this.state.isPaused) {
-        this._stopTickTimer();
-      } else {
-        this._startTickTimer();
-      }
     };
     this._onTick = () => {
       const now = HtmlUtils.now();
@@ -46,6 +40,16 @@ class App extends React.Component {
     this._onResize();
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState.isPaused !== this.state.isPaused) {
+      if (nextState.isPaused) {
+        this._stopTickTimer();
+      } else {
+        this._startTickTimer();
+      }
+    }
+  }
+
   componentWillUnmount() {
     TimeStore.removeChangeListener(this._onChange);
     document.removeEventListener("keydown", this._onKeyDown);
@@ -56,6 +60,7 @@ class App extends React.Component {
 
   _startTickTimer() {
     if (!this._tickTimer) {
+      setTimeout(this._onTick, 0);
       this._tickTimer = setInterval(this._onTick, 1000);
     }
   }

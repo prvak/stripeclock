@@ -1,12 +1,11 @@
 import React from "react";
 import TimeActions from "../actions/TimeActions";
-import HtmlUtils from "../HtmlUtils";
 
 class Footer extends React.Component {
   constructor() {
     super();
     this._onPause = (e) => {
-      TimeActions.togglePaused(HtmlUtils.now());
+      TimeActions.togglePaused();
       e.preventDefault();
     };
   }

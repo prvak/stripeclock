@@ -2,6 +2,7 @@ import events from "events";
 
 import AppDispatcher from "../dispatcher/AppDispatcher";
 import TimeConstants from "../constants/TimeConstants";
+import HtmlUtils from "../HtmlUtils";
 
 const EventEmitter = events.EventEmitter;
 const CHANGE_EVENT = "change";
@@ -9,7 +10,7 @@ const CHANGE_EVENT = "change";
 class TimeStore extends EventEmitter {
   constructor() {
     super();
-    this._timestamp = 0;
+    this._timestamp = HtmlUtils.now();
     this._isPaused = false;
   }
 
@@ -34,9 +35,7 @@ class TimeStore extends EventEmitter {
   }
 
   togglePaused() {
-    console.log("before:", this.isPaused());
     this._isPaused = !this._isPaused;
-    console.log("after:", this.isPaused());
   }
 
   isPaused() {
@@ -54,7 +53,6 @@ AppDispatcher.register((action) => {
       store.emitChange();
       break;
     case TimeConstants.TIME_TOGGLE_PAUSED:
-      store.setTimestamp(action.timestamp);
       store.togglePaused();
       store.emitChange();
       break;
