@@ -76,7 +76,14 @@ class App extends React.Component {
     const time = `${hours}${minutes}${seconds}`;
     const date = `${year}${month}${day}`;
     const size = Math.floor(this.state.windowSize.width / TimeConstants.WINDOW_COLUMNS);
-    return <div id="app"><DateTime date={date} time={time} size={size} /></div>;
+    const style = {
+      backgroundSize: size,
+      width: TimeConstants.WINDOW_COLUMNS * size,
+    };
+    return (<div id="app">
+        <div className="bottomFill" style={style}></div>
+        <DateTime date={date} time={time} size={size} />
+      </div>);
   }
 }
 

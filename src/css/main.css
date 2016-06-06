@@ -11,7 +11,26 @@ body {
   left: 0px;
 }
 
-.datetime {
+.bottomFill {
+  margin: 0 auto;
+  position: absolute;
+  background-image: url("../graphics/stripesVertical.svg");
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.dateTimeWrapper {
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-image: url("../graphics/stripesHorizontal.svg");
+}
+
+.dateTime {
   margin: 0 auto;
   position: absolute;
   top: 0;
@@ -28,11 +47,11 @@ body {
 
 .right {
   background-size: 100% 100%;
-  background-image: url("../graphics/stripes.svg");
+  background-image: url("../graphics/stripesDiagonal.svg");
 }
 
 .left {
   background-size: 100% 100%;
-  background-image: url("../graphics/stripes.svg");
+  background-image: url("../graphics/stripesDiagonal.svg");
   transform: rotate(90deg);
 }
