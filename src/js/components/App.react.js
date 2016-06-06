@@ -97,7 +97,7 @@ class App extends React.Component {
     const isSpoiled = this.state.isSpoiled;
     const style = {
       backgroundSize: `${size}px`,
-      backgroundPositionX: `${shift}px`,
+      backgroundPosition: `${shift}px 0px`,
     };
     return (<div id="app" style={style}>
         <DateTime date={date} time={time} size={size} isSpoiled={isSpoiled} />
