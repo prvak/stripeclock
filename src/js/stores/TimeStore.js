@@ -10,6 +10,7 @@ class TimeStore extends EventEmitter {
   constructor() {
     super();
     this._timestamp = 0;
+    this._isPaused = false;
   }
 
   emitChange() {
@@ -31,6 +32,16 @@ class TimeStore extends EventEmitter {
   getTimestamp() {
     return this._timestamp;
   }
+
+  togglePaused() {
+    console.log("before:", this.isPaused());
+    this._isPaused = !this._isPaused;
+    console.log("after:", this.isPaused());
+  }
+
+  isPaused() {
+    return this._isPaused;
+  }
 }
 
 const store = new TimeStore();
@@ -40,6 +51,11 @@ AppDispatcher.register((action) => {
   switch (action.actionType) {
     case TimeConstants.TIME_SET:
       store.setTimestamp(action.timestamp);
+      store.emitChange();
+      break;
+    case TimeConstants.TIME_TOGGLE_PAUSED:
+      store.setTimestamp(action.timestamp);
+      store.togglePaused();
       store.emitChange();
       break;
     default:

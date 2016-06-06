@@ -10,6 +10,7 @@ import TimeConstants from "../constants/TimeConstants";
 function getAppState() {
   return {
     timestamp: TimeStore.getTimestamp(),
+    isPaused: TimeStore.isPaused(),
     windowSize: HtmlUtils.getWindowSize(),
   };
 }
@@ -20,6 +21,12 @@ class App extends React.Component {
     this.state = getAppState();
     this._onChange = () => {
       this.setState(getAppState());
+      console.log("isPaused", this.state.isPaused);
+      if (this.state.isPaused) {
+        this._stopTickTimer();
+      } else {
+        this._startTickTimer();
+      }
     };
     this._onTick = () => {
       const now = HtmlUtils.now();
@@ -79,7 +86,7 @@ class App extends React.Component {
     const size = Math.floor(this.state.windowSize.width / TimeConstants.WINDOW_COLUMNS);
     return (<div id="app">
         <DateTime date={date} time={time} size={size} />
-        <Footer />
+        <Footer isPaused={this.state.isPaused} />
       </div>);
   }
 }

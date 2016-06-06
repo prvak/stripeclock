@@ -8,6 +8,12 @@ const TimeActions = {
       timestamp,
     });
   },
+  togglePaused: (timestamp) => {
+    AppDispatcher.dispatch({
+      actionType: TimeConstants.TIME_TOGGLE_PAUSED,
+      timestamp,
+    });
+  },
 };
 
 export default TimeActions;
