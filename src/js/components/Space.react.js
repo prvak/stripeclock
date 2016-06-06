@@ -5,6 +5,7 @@ class Digit extends React.Component {
   shouldComponentUpdate(nextProps) {
     return this.props.width !== nextProps.width
       || this.props.height !== nextProps.height
+      || this.props.isSpoiled !== nextProps.isSpoiled
       || this.props.size !== nextProps.size;
   }
 
@@ -13,13 +14,14 @@ class Digit extends React.Component {
     const pixels = [];
     const createPixel = (x, y, value) => {
       const key = `${x}x${y}`;
+      const isSpoiled = this.props.isSpoiled;
       const style = {
         position: "absolute",
         left: `${x * size}px`,
         top: `${y * size}px`,
       };
       return (<div style={style} key={key}>
-        <Pixel value={value} size={size} />
+        <Pixel value={value} size={size} isSpoiled={isSpoiled} />
       </div>);
     };
     for (let y = 0; y < this.props.height; y++) {
@@ -35,6 +37,7 @@ Digit.propTypes = {
   width: React.PropTypes.number.isRequired,
   height: React.PropTypes.number.isRequired,
   size: React.PropTypes.number.isRequired,
+  isSpoiled: React.PropTypes.bool.isRequired,
 };
 
 export default Digit;

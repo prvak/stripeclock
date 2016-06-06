@@ -11,6 +11,7 @@ function getAppState() {
   return {
     timestamp: TimeStore.getTimestamp(),
     isPaused: TimeStore.isPaused(),
+    isSpoiled: TimeStore.isSpoiled(),
     windowSize: HtmlUtils.getWindowSize(),
   };
 }
@@ -89,9 +90,11 @@ class App extends React.Component {
     const time = `${hours}${minutes}${seconds}`;
     const date = `${year}${month}${day}`;
     const size = Math.floor(this.state.windowSize.width / TimeConstants.WINDOW_COLUMNS);
+    const isPaused = this.state.isPaused;
+    const isSpoiled = this.state.isSpoiled;
     return (<div id="app">
-        <DateTime date={date} time={time} size={size} />
-        <Footer isPaused={this.state.isPaused} />
+        <DateTime date={date} time={time} size={size} isSpoiled={isSpoiled} />
+        <Footer isPaused={isPaused} isSpoiled={isSpoiled} />
       </div>);
   }
 }

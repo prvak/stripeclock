@@ -6,12 +6,14 @@ import TimeConstants from "../constants/TimeConstants";
 class Line extends React.Component {
   shouldComponentUpdate(nextProps) {
     return this.props.text !== nextProps.text
+      || this.props.isSpoiled !== nextProps.isSpoiled
       || this.props.size !== nextProps.size;
   }
 
   render() {
     const characters = this.props.text.split("");
     const size = this.props.size;
+    const isSpoiled = this.props.isSpoiled;
     const elements = [];
     const renderCharacter = (character, index) => {
       const x = (index * TimeConstants.CHAR_COLUMNS + 1 + index) * size;
@@ -23,7 +25,7 @@ class Line extends React.Component {
         top: `${y}px`,
       };
       return (<div style={style} key={key}>
-          <Character value={character} size={size} />
+          <Character value={character} size={size} isSpoiled={isSpoiled} />
         </div>);
     };
     const renderVerticalSpace = (index) => {
@@ -36,7 +38,7 @@ class Line extends React.Component {
         top: `${y}px`,
       };
       return (<div style={style} key={key}>
-          <Space width={1} height={TimeConstants.CHAR_ROWS} size={size} />
+          <Space width={1} height={TimeConstants.CHAR_ROWS} size={size} isSpoiled={isSpoiled} />
         </div>);
     };
     characters.forEach((character, index) => {
@@ -53,6 +55,7 @@ class Line extends React.Component {
 Line.propTypes = {
   text: React.PropTypes.string.isRequired,
   size: React.PropTypes.number.isRequired,
+  isSpoiled: React.PropTypes.bool.isRequired,
 };
 
 export default Line;

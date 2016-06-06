@@ -13,6 +13,12 @@ const TimeActions = {
       actionType: TimeConstants.TIME_TOGGLE_PAUSED,
     });
   },
+  setSpoiled: (isSpoiled) => {
+    AppDispatcher.dispatch({
+      actionType: TimeConstants.TIME_SET_SPOILED,
+      isSpoiled,
+    });
+  },
 };
 
 export default TimeActions;

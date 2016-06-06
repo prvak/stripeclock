@@ -7,12 +7,11 @@ import HtmlUtils from "../HtmlUtils";
 const EventEmitter = events.EventEmitter;
 const CHANGE_EVENT = "change";
 
-class TimeStore extends EventEmitter {
+class PixelStore extends EventEmitter {
   constructor() {
     super();
     this._timestamp = HtmlUtils.now();
     this._isPaused = false;
-    this._isSpoiled = false;
   }
 
   emitChange() {

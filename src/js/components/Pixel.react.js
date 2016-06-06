@@ -3,12 +3,20 @@ import React from "react";
 class Pixel extends React.Component {
   shouldComponentUpdate(nextProps) {
     return this.props.value !== nextProps.value
+      || this.props.isSpoiled !== nextProps.isSpoiled
       || this.props.size !== nextProps.size;
   }
 
   render() {
     const size = this.props.size;
-    const className = this.props.value < 0.5 ? "right" : "left";
+    let className = "right";
+    if (this.props.value > 0.5) {
+      if (this.props.isSpoiled) {
+        className = "spoiled";
+      } else {
+        className = "left";
+      }
+    }
     const style = {
       width: `${size}px`,
       height: `${size}px`,
@@ -20,6 +28,7 @@ class Pixel extends React.Component {
 Pixel.propTypes = {
   value: React.PropTypes.number.isRequired,
   size: React.PropTypes.number.isRequired,
+  isSpoiled: React.PropTypes.bool.isRequired,
 };
 
 export default Pixel;

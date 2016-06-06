@@ -7,6 +7,7 @@ class DateTime extends React.Component {
   shouldComponentUpdate(nextProps) {
     return this.props.date !== nextProps.date
       || this.props.time !== nextProps.time
+      || this.props.isSpoiled !== nextProps.isSpoiled
       || this.props.size !== nextProps.size;
   }
 
@@ -14,6 +15,7 @@ class DateTime extends React.Component {
     const date = this.props.date;
     const time = this.props.time;
     const size = this.props.size;
+    const isSpoiled = this.props.isSpoiled;
 
     const elements = [];
     const renderLine = (text, index) => {
@@ -26,7 +28,7 @@ class DateTime extends React.Component {
         top: `${y}px`,
       };
       return (<div style={style} key={key}>
-          <Line text={text} size={size} />
+          <Line text={text} size={size} isSpoiled={isSpoiled} />
         </div>);
     };
     const renderHorizontalSpace = (index, length) => {
@@ -39,7 +41,7 @@ class DateTime extends React.Component {
         top: `${y}px`,
       };
       return (<div style={style} key={key}>
-          <Space width={length} height={1} size={size} />
+          <Space width={length} height={1} size={size} isSpoiled={isSpoiled} />
         </div>);
     };
     const lines = [time, date];
@@ -77,6 +79,7 @@ DateTime.propTypes = {
   date: React.PropTypes.string.isRequired,
   time: React.PropTypes.string.isRequired,
   size: React.PropTypes.number.isRequired,
+  isSpoiled: React.PropTypes.bool.isRequired,
 };
 
 export default DateTime;
