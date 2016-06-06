@@ -89,7 +89,9 @@ class App extends React.Component {
 
     const time = `${hours}${minutes}${seconds}`;
     const date = `${year}${month}${day}`;
-    const size = Math.floor(this.state.windowSize.width / TimeConstants.WINDOW_COLUMNS);
+    const w = Math.floor(this.state.windowSize.width / TimeConstants.WINDOW_COLUMNS);
+    const h = Math.floor((this.state.windowSize.height - 10) / TimeConstants.WINDOW_ROWS);
+    const size = Math.min(w, h);
     const shift = (this.state.windowSize.width - TimeConstants.WINDOW_COLUMNS * size) / 2;
     const isPaused = this.state.isPaused;
     const isSpoiled = this.state.isSpoiled;
