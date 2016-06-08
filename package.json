@@ -5,7 +5,12 @@
   "scripts": {
     "build": "browserify src/js/main.js -t babelify --outfile src/js/bundle.js",
     "lint": "eslint src/",
-    "test": "mocha --compilers js:babel-register --recursive test/"
+    "test": "mocha --compilers js:babel-register --recursive test/",
+    "minify": "uglifyjs --compress --output export/js/bundle.js -- src/js/bundle.js",
+    "clean": "rm -rf exports/ ; rm src/js/bundle.js",
+    "makedirs": "mkdir -p export/js/",
+    "copyfiles": "cp -r src/index.html src/css/ src/graphics/ export/",
+    "export": "NODE_ENV=production npm run makedirs && npm run build && npm run minify && npm run copyfiles"
   },
   "author": "prvak",
   "license": "MIT",
@@ -20,12 +25,13 @@
     "babelify": "^7.3.0",
     "browserify": "^13.0.0",
     "chai": "^3.5.0",
+    "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^6.2.0",
+    "eslint-plugin-react": "^4.3.0",
     "flux": "^2.1.1",
     "mocha": "^2.4.5",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
-    "eslint": "^2.7.0",
-    "eslint-config-airbnb": "^6.2.0",
-    "eslint-plugin-react": "^4.3.0"
+    "uglify": "^0.1.5"
   }
 }
