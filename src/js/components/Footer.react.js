@@ -4,7 +4,7 @@ import TimeActions from "../actions/TimeActions";
 // Spoiler timer will fire after this many milliseconds.
 const SPOILER_UPDATE_FREQUENCY = 40;
 // Spoiler will be displayed after this many milliseconds.
-const SPOILER_TIMEOUT = 500;
+const SPOILER_TIMEOUT = 1500;
 // Spoiler will be displayed when spoiler counter reaches this value.
 const SPOILER_MAX = 100;
 
