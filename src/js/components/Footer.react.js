@@ -18,10 +18,9 @@ class Footer extends React.Component {
       TimeActions.togglePaused();
       e.preventDefault();
     };
-    this._onSpoilerStart = (e) => {
+    this._onSpoilerStart = () => {
       this._startSpoilerTimer();
       this.setState({ spoiler: 0 });
-      e.preventDefault();
     };
     this._onSpoilerTick = () => {
       const spoilerIncrease = SPOILER_MAX / (SPOILER_TIMEOUT / SPOILER_UPDATE_FREQUENCY);
@@ -32,10 +31,12 @@ class Footer extends React.Component {
       }
       this.setState({ spoiler: nextSpoiler });
     };
-    this._onSpoilerEnd = (e) => {
+    this._onSpoilerEnd = () => {
       this._stopSpoilerTimer();
       TimeActions.setSpoiled(false);
       this.setState({ spoiler: 0 });
+    };
+    this._doNothing = (e) => {
       e.preventDefault();
     };
   }
@@ -69,6 +70,7 @@ class Footer extends React.Component {
         <a href="#" style={spoilerStyle}
           onMouseOver={this._onSpoilerStart}
           onMouseOut={this._onSpoilerEnd}
+          onClick={this._doNothing}
         >
           Spoiler
         </a>
