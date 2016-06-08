@@ -65,14 +65,14 @@ class Footer extends React.Component {
       background: `linear-gradient(90deg, #88CC88 ${spoiler}%, #2D882D ${spoiler}%)`,
     };
     return (<div className="footer">
-        <a href="https://github.com/prvak/stripeclock">Github</a>
         <a href="#" onClick={this._onPause}>{text}</a>
         <a href="#" style={spoilerStyle}
           onMouseOver={this._onSpoilerStart}
           onMouseOut={this._onSpoilerEnd}
         >
-          Spoiler?
+          Spoiler
         </a>
+        <a href="https://github.com/prvak/stripeclock">Github</a>
       </div>);
   }
 }
